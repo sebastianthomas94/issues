@@ -16,7 +16,7 @@ export enum ManualPaymentMethodStr {
 ### **Requirement**
 
 - Only installments are allowed to be paid by cheque.
-- if the check date is greater than current due date the due date is extended to check date. if not due date remains same.
+- if the cheque date is greater than current due date the due date is extended to cheque date. if not due date remains same.
 
 ### Flow
 
@@ -51,3 +51,18 @@ export enum PurchaseHistoryStatusStr {
 3. Admin will verify if the cheque is cleared or rejected or bounced. The date and receipt photo will be recorded.
    - If cleared the status will be "Completed".
    - If rejected or bounced the status will be "Overdue" or "Pending" based on due date.
+
+
+
+
+## Implementation
+
+- There won't be a need of new route or controller.
+- The orders will be created like always with OrderController.createOrder.
+- The order notes will be appended with the cheque details. if the payment method is cheque, the order notes will always have cheque status.
+- In order line the payment method will be ManualPaymentMethodStr.Cheque.
+- In every update the check status will change to its progressive or regressive state.
+
+
+INSTRUCTION: Go through the code and create a concise implementation documentation for github issue (cheque-feat-github-issue-v2.md). Do not need to be very elaborate. Just the key points, challenges and implementation details.
+**DO NOT MAKE ANY OTHER EDITS IN THE CODE.**
